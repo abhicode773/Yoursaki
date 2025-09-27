@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For My Saki 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at bottom, #0d1b2a, #000);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: "Cursive", sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #ffb6c1;
+      text-shadow: 0 0 15px #ff4da6, 0 0 30px #ff4da6;
+      margin-bottom: 20px;
+    }
+
+    #message {
+      font-size: 1.5em;
+      opacity: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid rgba(255,255,255,0.75);
+      animation: typing 5s steps(40, end), blink 0.7s step-end infinite;
+      animation-delay: 2s;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes typing {
+      from { width: 0; opacity: 1; }
+      to { width: 100%; opacity: 1; }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: rgba(255,255,255,0.75); }
+    }
+
+    .btn {
+      margin-top: 40px;
+      padding: 12px 25px;
+      background: #ff4da6;
+      color: white;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff4da6, 0 0 30px #ff99cc;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    #hiddenMessage {
+      display: none;
+      font-size: 1.7em;
+      margin-top: 20px;
+      color: #ffd6e0;
+      text-shadow: 0 0 15px #ff80bf, 0 0 30px #ff4da6;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -10px;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      transform: rotate(45deg);
+      animation: floatUp 8s infinite ease-in;
+    }
+
+    .heart:before,
+    .heart:after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+    }
+
+    .heart:before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart:after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0) rotate(45deg); opacity: 1; }
+      to { transform: translateY(-110vh) rotate(45deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>For My Saki 💖</h1>
+  <div id="message">Every heartbeat of mine whispers your name…</div>
+  <button class="btn" onclick="showLove()">Tap me, my love</button>
+  <div id="hiddenMessage">I love you endlessly, forever yours 🌹</div>
+
+  <script>
+    function showLove() {
+      document.getElementById('hiddenMessage').style.display = 'block';
+    }
+
+    // create floating hearts
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.background = `hsl(${Math.random() * 360}, 70%, 70%)`;
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+    setInterval(createHeart, 500);
+  </script>
+</body>
+</html>
